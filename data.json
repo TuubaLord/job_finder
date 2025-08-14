@@ -1,0 +1,23 @@
+{
+  "jobs": [
+    {"id": 1, "title": "Backend Developer", "company": "TechCorp", "description": "Work on APIs and services."},
+    {"id": 2, "title": "Frontend Developer", "company": "Webify", "description": "Build engaging user interfaces."},
+    {"id": 3, "title": "Data Scientist", "company": "DataMagic", "description": "Analyze and model complex datasets."},
+    {"id": 4, "title": "DevOps Engineer", "company": "CloudNine", "description": "Manage infrastructure and deployments."},
+    {"id": 5, "title": "Product Manager", "company": "InnoSoft", "description": "Guide product vision and execution."}
+  ],
+  "employees": [
+    {"id": 1, "name": "Alice", "skills": "Python, Flask", "experience": "3 years at StartUp"},
+    {"id": 2, "name": "Bob", "skills": "JavaScript, React", "experience": "2 years freelancing"},
+    {"id": 3, "name": "Carol", "skills": "Data analysis, SQL", "experience": "4 years at FinanceCo"},
+    {"id": 4, "name": "Dave", "skills": "DevOps, Docker", "experience": "5 years at CloudCo"},
+    {"id": 5, "name": "Eve", "skills": "Product strategy, Agile", "experience": "6 years at BigCorp"}
+  ],
+  "likes": {
+    "job_likes": {},
+    "job_dislikes": {},
+    "employee_likes": {},
+    "employee_dislikes": {}
+  },
+  "matches": []
+}

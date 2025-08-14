@@ -17,3 +17,17 @@
   <label>Experience: <input type="text" name="experience" /></label><br />
   <button type="submit">Start Swiping Jobs</button>
 </form>
+
+<h2>Existing Jobs</h2>
+<ul>
+  {% for job in jobs %}
+  <li><a href="{{ url_for('login_job', job_id=job.id) }}">{{ job.title }} - {{ job.company }}</a></li>
+  {% endfor %}
+</ul>
+
+<h2>Existing Employees</h2>
+<ul>
+  {% for employee in employees %}
+  <li><a href="{{ url_for('login_employee', employee_id=employee.id) }}">{{ employee.name }}</a></li>
+  {% endfor %}
+</ul>
