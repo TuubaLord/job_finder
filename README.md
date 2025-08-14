@@ -16,4 +16,4 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Visit `http://localhost:5000` in your browser. Use the links to swipe through jobs or candidates.
+Visit `http://localhost:8000` in your browser. Create a job or employee profile on the front page, then swipe through the opposite list.

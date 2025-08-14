@@ -1,5 +1,8 @@
 <!doctype html>
 <title>Candidate Swipe</title>
+{% if job %}
+<p>Swiping for {{ job.title }} - {{ job.company }}</p>
+{% endif %}
 <h2>{{ candidate.name }}</h2>
 <p><strong>Skills:</strong> {{ candidate.skills }}</p>
 <p><strong>Experience:</strong> {{ candidate.experience }}</p>

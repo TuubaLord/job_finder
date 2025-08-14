@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, url_for
+from flask import Flask, render_template, session, redirect, url_for, request
 from models import Job, Employee
 
 app = Flask(__name__)
@@ -24,13 +24,39 @@ employees = [
 def index():
     return render_template("index.html")
 
+
+@app.route("/create_job", methods=["POST"])
+def create_job():
+    job_data = {
+        "title": request.form.get("title"),
+        "company": request.form.get("company"),
+        "description": request.form.get("description"),
+    }
+    session["my_job"] = job_data
+    session["candidate_index"] = 0
+    return redirect(url_for("swipe_candidates"))
+
+
+@app.route("/create_employee", methods=["POST"])
+def create_employee():
+    employee_data = {
+        "name": request.form.get("name"),
+        "skills": request.form.get("skills"),
+        "experience": request.form.get("experience"),
+    }
+    session["my_employee"] = employee_data
+    session["job_index"] = 0
+    return redirect(url_for("swipe_jobs"))
+
 @app.route("/jobs")
 def swipe_jobs():
+    if "my_employee" not in session:
+        return redirect(url_for("index"))
     index = session.get("job_index", 0)
     if index >= len(jobs):
         return render_template("done.html", target="jobs")
     job = jobs[index]
-    return render_template("job.html", job=job)
+    return render_template("job.html", job=job, employee=session.get("my_employee"))
 
 @app.route("/jobs/<action>", methods=["POST"])
 def handle_job_action(action):
@@ -40,11 +66,15 @@ def handle_job_action(action):
 
 @app.route("/candidates")
 def swipe_candidates():
+    if "my_job" not in session:
+        return redirect(url_for("index"))
     index = session.get("candidate_index", 0)
     if index >= len(employees):
         return render_template("done.html", target="candidates")
     candidate = employees[index]
-    return render_template("candidate.html", candidate=candidate)
+    return render_template(
+        "candidate.html", candidate=candidate, job=session.get("my_job")
+    )
 
 @app.route("/candidates/<action>", methods=["POST"])
 def handle_candidate_action(action):
