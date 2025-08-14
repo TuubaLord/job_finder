@@ -1,0 +1,11 @@
+<!doctype html>
+<title>Candidate Swipe</title>
+<h2>{{ candidate.name }}</h2>
+<p><strong>Skills:</strong> {{ candidate.skills }}</p>
+<p><strong>Experience:</strong> {{ candidate.experience }}</p>
+<form action="{{ url_for('handle_candidate_action', action='like') }}" method="post">
+    <button type="submit">Like</button>
+</form>
+<form action="{{ url_for('handle_candidate_action', action='skip') }}" method="post">
+    <button type="submit">Skip</button>
+</form>
