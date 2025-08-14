@@ -151,7 +151,11 @@ def handle_job_action(action):
             matches.add((job_id, emp_id))
     else:
         employee_dislikes.setdefault(emp_id, set()).add(job_id)
-    session["job_index"] = index + 1
+    # Reset the job index.  The available_jobs list is rebuilt on each
+    # request with already liked/disliked jobs filtered out, so simply
+    # keeping the index the same (effectively zero) ensures we don't skip
+    # the next unseen job.
+    session["job_index"] = 0
     save_data()
     return redirect(url_for("swipe_jobs"))
 
@@ -188,7 +192,10 @@ def handle_candidate_action(action):
             matches.add((job_id, emp_id))
     else:
         job_dislikes.setdefault(job_id, set()).add(emp_id)
-    session["candidate_index"] = index + 1
+    # Similar to job swiping above, reset the candidate index so that after
+    # removing the current candidate from the available list we present the
+    # next unseen candidate instead of skipping ahead.
+    session["candidate_index"] = 0
     save_data()
     return redirect(url_for("swipe_candidates"))
 
