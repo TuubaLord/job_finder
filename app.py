@@ -85,6 +85,7 @@ def create_job():
     jobs.append(job)
     session["my_job_id"] = job.id
     session["candidate_index"] = 0
+    session.pop("my_employee_id", None)
     save_data()
     return redirect(url_for("swipe_candidates"))
 
@@ -101,6 +102,7 @@ def create_employee():
     employees.append(employee)
     session["my_employee_id"] = employee.id
     session["job_index"] = 0
+    session.pop("my_job_id", None)
     save_data()
     return redirect(url_for("swipe_jobs"))
 
@@ -109,6 +111,7 @@ def create_employee():
 def login_job(job_id):
     session["my_job_id"] = job_id
     session["candidate_index"] = 0
+    session.pop("my_employee_id", None)
     return redirect(url_for("swipe_candidates"))
 
 
@@ -116,6 +119,7 @@ def login_job(job_id):
 def login_employee(employee_id):
     session["my_employee_id"] = employee_id
     session["job_index"] = 0
+    session.pop("my_job_id", None)
     return redirect(url_for("swipe_jobs"))
 
 @app.route("/jobs")
