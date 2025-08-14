@@ -5,6 +5,8 @@ A simple swiping web app built with Flask. It lets you swipe through jobs or pot
 ## Setup
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
