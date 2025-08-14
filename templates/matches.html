@@ -3,17 +3,25 @@
 <h1>Matches</h1>
 {% if my_job %}
 <p>Matches for {{ my_job.title }} - {{ my_job.company }}</p>
+{% if matches %}
 <ul>
   {% for emp in matches %}
   <li><strong>{{ emp.name }}</strong> - {{ emp.skills }} ({{ emp.experience }})</li>
   {% endfor %}
 </ul>
+{% else %}
+<p>No matches yet.</p>
+{% endif %}
 {% elif my_employee %}
 <p>Matches for {{ my_employee.name }}</p>
+{% if matches %}
 <ul>
   {% for job in matches %}
   <li><strong>{{ job.title }}</strong> - {{ job.company }}: {{ job.description }}</li>
   {% endfor %}
 </ul>
+{% else %}
+<p>No matches yet.</p>
+{% endif %}
 {% endif %}
 <p><a href="{{ url_for('index') }}">Back to home</a></p>
