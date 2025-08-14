@@ -193,7 +193,9 @@ def handle_candidate_action(action):
     return redirect(url_for("swipe_candidates"))
 
 
-@app.route("/matches")
+# Provide a consistent endpoint name so url_for('matches') works
+# even though there's a global 'matches' set in this module.
+@app.route("/matches", endpoint="matches")
 def matches_view():
     if "my_job_id" in session:
         job_id = session["my_job_id"]
