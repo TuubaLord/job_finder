@@ -53,4 +53,4 @@ def handle_candidate_action(action):
     return redirect(url_for("swipe_candidates"))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=8000)
