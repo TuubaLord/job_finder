@@ -1,7 +1,7 @@
 <!doctype html>
 <title>Candidate Swipe</title>
 {% if job %}
-<p>Swiping for {{ job.title }} - {{ job.company }}</p>
+<p>Swiping for {{ job.title }} - {{ job.company }} | <a href="{{ url_for('matches') }}">Matches</a></p>
 {% endif %}
 <h2>{{ candidate.name }}</h2>
 <p><strong>Skills:</strong> {{ candidate.skills }}</p>
